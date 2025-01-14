@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router";
-import { Button } from "@mui/material";
+import CafeList from "./components/CafeList/CafeList";
+import CafeDetails from "./components/Card/CafeDetails";
 
 function App() {
   return (
@@ -7,11 +8,12 @@ function App() {
       <Route
         path="/"
         element={
-          <div className="text-3xl text-red-800">
-            <Button variant="text">WILL BE GOOD PROJECT NEXT TIME</Button>
+          <div className="p-10">
+            <CafeList />
           </div>
         }
       />
+      <Route path="/cafe/:id" element={<CafeDetails />} />
       <Route
         path="/a"
         element={<div className="text-3xl text-red-800">a</div>}
