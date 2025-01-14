@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router";
+import { Button } from "@mui/material";
 
 function App() {
   return (
@@ -7,7 +8,7 @@ function App() {
         path="/"
         element={
           <div className="text-3xl text-red-800">
-            WILL BE GOOD PROJECT NEXT TIME
+            <Button variant="text">WILL BE GOOD PROJECT NEXT TIME</Button>
           </div>
         }
       />
