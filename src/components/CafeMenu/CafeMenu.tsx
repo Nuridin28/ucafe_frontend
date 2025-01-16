@@ -1,4 +1,5 @@
 import { cafes } from "../../constants/constants";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 type Props = { id: number };
 
@@ -8,8 +9,15 @@ export default function CafeMenu({ id }: Props) {
     <div className="text-black text-3xl">
       {cafeMenu?.map((item) => (
         <div>
-          <p>{item.name}</p>
-          <p>{item.price}</p>
+          <div className="flex items-center gap-40 justify-center">
+            <p>{item.name}</p>
+            <div className="flex items-center gap-4">
+              <p>{item.price} тг</p>
+              <div className="cursor-pointer">
+                <AddShoppingCartIcon />
+              </div>
+            </div>
+          </div>
         </div>
       ))}
     </div>
