@@ -12,10 +12,10 @@ export default function Nav({}: Props) {
   };
 
   return (
-    <div className="flex justify-between items-center px-16 py-4 border-b border-lightGray">
+    <div className="flex justify-between items-center md:px-16 px-4 py-4 border-b border-lightGray">
       <div className="text-lg font-bold text-gray">somename</div>
       <div className="flex items-center gap-12">
-        <div className="flex items-center gap-2">
+        <div className="sm:flex items-center gap-2 hidden">
           <img src={person} alt="profile" className="h-6 w-6" />
           <p>Log in</p>
         </div>

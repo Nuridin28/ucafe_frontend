@@ -1,4 +1,7 @@
 import mock1 from "../assets/png/mock1.jpg";
+import paris from "../assets/png/paris.png";
+import time from "../assets/png/time.png";
+
 export const cafes = [
   {
     id: 1,
@@ -49,5 +52,16 @@ export const cafes = [
     title: "Cafe6",
     descr: "Some descr for cafe",
     img: mock1,
+  },
+];
+
+export const benefits = [
+  {
+    img: time,
+    text: "Order will be ready in less than 15 minutes",
+  },
+  {
+    img: paris,
+    text: "Only fresh and natural products",
   },
 ];
