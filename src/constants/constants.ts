@@ -1,4 +1,5 @@
 import mock1 from "../assets/png/mock1.jpg";
+import sandwith from "../assets/png/sandwitch.jpg";
 import paris from "../assets/png/paris.png";
 import time from "../assets/png/time.png";
 
@@ -10,14 +11,14 @@ export const cafes = [
     img: mock1,
     menu: [
       {
-        name: "sandwitch",
-        img: "",
-        price: 500,
-        descr: "taste",
+        name: "Нано говяжье комбо",
+        img: sandwith,
+        price: 2790,
+        descr: "Нано бургер говяжий + картофель фри + соус кетчуп + напиток",
       },
       {
         name: "sandwitch",
-        img: "",
+        img: sandwith,
         price: 500,
         descr: "taste",
       },
@@ -28,12 +29,40 @@ export const cafes = [
     title: "Cafe2",
     descr: "Some descr for cafe",
     img: mock1,
+    menu: [
+      {
+        name: "Нано говяжье комбо",
+        img: sandwith,
+        price: 2790,
+        descr: "Нано бургер говяжий + картофель фри + соус кетчуп + напиток",
+      },
+      {
+        name: "sandwitch",
+        img: sandwith,
+        price: 500,
+        descr: "taste",
+      },
+    ],
   },
   {
     id: 3,
     title: "Cafe3",
     descr: "Some descr for cafe",
     img: mock1,
+    menu: [
+      {
+        name: "Нано говяжье комбо",
+        img: sandwith,
+        price: 2790,
+        descr: "Нано бургер говяжий + картофель фри + соус кетчуп + напиток",
+      },
+      {
+        name: "sandwitch",
+        img: sandwith,
+        price: 500,
+        descr: "taste",
+      },
+    ],
   },
   {
     id: 4,
@@ -64,4 +93,13 @@ export const benefits = [
     img: paris,
     text: "Only fresh and natural products",
   },
+];
+
+export const cafeMenuItems = [
+  "all",
+  "sandwiches",
+  "coffee",
+  "tea",
+  "drinks",
+  "other",
 ];

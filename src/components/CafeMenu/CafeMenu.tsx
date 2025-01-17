@@ -1,25 +1,28 @@
 import { cafes } from "../../constants/constants";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import CafeMenuItem from "./CafeMenuItem";
+
+import CafeMenuLeft from "./CafeMenuLeft";
 
 type Props = { id: number };
 
 export default function CafeMenu({ id }: Props) {
   const cafeMenu = cafes.find((cafe) => cafe.id === Number(id))?.menu;
   return (
-    <div className="text-black text-3xl">
-      {cafeMenu?.map((item) => (
-        <div>
-          <div className="flex items-center gap-40 justify-center">
-            <p>{item.name}</p>
-            <div className="flex items-center gap-4">
-              <p>{item.price} тг</p>
-              <div className="cursor-pointer">
-                <AddShoppingCartIcon />
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
+    <div className="flex">
+      <div className="w-1/4 text-left hidden sm:flex">
+        <CafeMenuLeft />
+      </div>
+      <div className="text-black text-3xl sm:w-1/2 w-full">
+        {cafeMenu?.map((item, id) => (
+          <CafeMenuItem
+            key={id}
+            img={item.img}
+            title={item.name}
+            descr={item.descr}
+            price={item.price}
+          />
+        ))}
+      </div>
     </div>
   );
 }

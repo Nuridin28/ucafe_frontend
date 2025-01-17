@@ -1,6 +1,8 @@
+import { useEffect } from "react";
 import ImgMediaCard from "../Card/ImgMediaCard";
 import { cafes } from "../../constants/constants";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 type Props = {};
 
@@ -15,9 +17,25 @@ export default function CafeList({}: Props) {
     navigate("/cafe");
   };
 
+  useEffect(() => {
+    document.documentElement.style.scrollBehavior = "smooth";
+    window.scrollTo(0, 0);
+    const resetScrollBehavior = () => {
+      document.documentElement.style.scrollBehavior = "auto";
+    };
+    return resetScrollBehavior;
+  }, [location.pathname]);
+
   return (
     <div className="md:px-16 px-4 py-4">
       <div className="flex justify-between items-center">
+        {isCafePage && (
+          <div className="flex items-center p-8 cursor-pointer">
+            <Link to={"/"}>
+              <ArrowBackIcon />
+            </Link>
+          </div>
+        )}
         <p className="text-2xl font-bold">Restaurants</p>
         {!isCafePage && (
           <button
