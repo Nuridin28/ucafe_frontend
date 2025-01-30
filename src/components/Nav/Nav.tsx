@@ -1,6 +1,7 @@
 import { useState } from "react";
 import person from "../../assets/svg/person.svg";
 import cart from "../../assets/svg/cart.svg";
+import { Link } from "react-router-dom";
 
 type Props = {};
 
@@ -13,14 +14,16 @@ export default function Nav({}: Props) {
 
   return (
     <div className="flex justify-between items-center md:px-16 px-4 py-4 border-b border-lightGray">
-      <div className="text-lg font-bold text-gray">somename</div>
+      <div className="text-lg font-bold text-gray">UCAFE</div>
       <div className="flex items-center gap-12">
         <div className="sm:flex items-center gap-2 hidden">
           <img src={person} alt="profile" className="h-6 w-6" />
           <p>Log in</p>
         </div>
         <div className="flex gap-2">
-          <img src={cart} alt="cart" className="h-6 w-6" />0
+          <Link to="/cart" className="flex items-center gap-2">
+            <img src={cart} alt="cart" className="h-6 w-6" />0
+          </Link>
         </div>
 
         <button

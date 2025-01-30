@@ -15,12 +15,14 @@ export const cafes = [
         img: sandwith,
         price: 2790,
         descr: "Нано бургер говяжий + картофель фри + соус кетчуп + напиток",
+        type: "sandwiches",
       },
       {
         name: "sandwitch",
         img: sandwith,
         price: 500,
         descr: "taste",
+        type: "sandwiches",
       },
     ],
   },
@@ -35,12 +37,14 @@ export const cafes = [
         img: sandwith,
         price: 2790,
         descr: "Нано бургер говяжий + картофель фри + соус кетчуп + напиток",
+        type: "sandwiches",
       },
       {
         name: "sandwitch",
         img: sandwith,
         price: 500,
         descr: "taste",
+        type: "sandwiches",
       },
     ],
   },
@@ -51,16 +55,18 @@ export const cafes = [
     img: mock1,
     menu: [
       {
-        name: "Нано говяжье комбо",
+        name: "Cola",
         img: sandwith,
         price: 2790,
         descr: "Нано бургер говяжий + картофель фри + соус кетчуп + напиток",
+        type: "drink",
       },
       {
-        name: "sandwitch",
+        name: "Tea",
         img: sandwith,
         price: 500,
         descr: "taste",
+        type: "tea",
       },
     ],
   },
@@ -103,3 +109,5 @@ export const cafeMenuItems = [
   "drinks",
   "other",
 ];
+
+export const cart: any[] = [];
