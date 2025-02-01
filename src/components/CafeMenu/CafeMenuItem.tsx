@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { cart } from "../../constants/constants";
-import { addToCart } from "../../features/Cart/CartSlice";
+import { addToCart } from "../../features/Cart/cartSlice";
 type Props = {
   img: string;
   title: string;
