@@ -1,8 +1,6 @@
 import { cafeMenuItems } from "../../constants/constants";
 
-type Props = {};
-
-export default function CafeMenuLeft({}: Props) {
+export default function CafeMenuLeft() {
   function capitalizeFirstLetter(str: string) {
     if (!str) return "";
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();

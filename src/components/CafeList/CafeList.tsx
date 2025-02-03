@@ -4,9 +4,7 @@ import { cafes } from "../../constants/constants";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-type Props = {};
-
-export default function CafeList({}: Props) {
+export default function CafeList() {
   const navigate = useNavigate();
   const location = useLocation();
 

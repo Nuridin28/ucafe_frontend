@@ -3,6 +3,7 @@ import CafeList from "./components/CafeList/CafeList";
 import CafeDetails from "./components/Card/CafeDetails";
 import Home from "./pages/Home";
 import Cart from "./components/Cart/Cart";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         path="/a"
         element={<div className="text-3xl text-red-800">a</div>}
       />
+      <Route path="/auth/login" element={<Login />} />
+      <Route path="*" element={<div>Page not found</div>} />
     </Routes>
   );
 }

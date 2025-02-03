@@ -1,8 +1,7 @@
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import { cart } from "../../constants/constants";
-type Props = {};
 
-export default function Cart({}: Props) {
+export default function Cart() {
   const price = cart.reduce((acc, item) => acc + item.price, 0);
   return (
     <div className="flex flex-col items-center my-8 gap-10 justify-center text-3xl px-80">
