@@ -73,7 +73,9 @@ export default function LoginForm() {
 
         <div className="flex items-center gap-2 text-xs font-normal justify-center">
           <p>Dont have an account?</p>
-          <p className="text-[#007AFF]">Sign up now</p>
+          <Link to={"/auth/registration"} className="text-[#007AFF]">
+            Sign up now
+          </Link>
         </div>
       </div>
     </div>

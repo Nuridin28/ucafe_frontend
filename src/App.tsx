@@ -4,6 +4,7 @@ import CafeDetails from "./components/Card/CafeDetails";
 import Home from "./pages/Home";
 import Cart from "./components/Cart/Cart";
 import Login from "./pages/Login";
+import { Registration } from "./components/Auth/Registration/Registration";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         element={<div className="text-3xl text-red-800">a</div>}
       />
       <Route path="/auth/login" element={<Login />} />
+      <Route path="/auth/registration" element={<Registration />} />
       <Route path="*" element={<div>Page not found</div>} />
     </Routes>
   );
