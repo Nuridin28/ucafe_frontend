@@ -3,9 +3,7 @@ import person from "../../assets/svg/person.svg";
 import cart from "../../assets/svg/cart.svg";
 import { Link } from "react-router-dom";
 
-type Props = {};
-
-export default function Nav({}: Props) {
+export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -18,7 +16,7 @@ export default function Nav({}: Props) {
       <div className="flex items-center gap-12">
         <div className="sm:flex items-center gap-2 hidden">
           <img src={person} alt="profile" className="h-6 w-6" />
-          <p>Log in</p>
+          <Link to={"/auth/login"}>Log in</Link>
         </div>
         <div className="flex gap-2">
           <Link to="/cart" className="flex items-center gap-2">
