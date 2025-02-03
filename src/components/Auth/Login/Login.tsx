@@ -3,6 +3,9 @@ import logImg from "../../../assets/png/logImg.png";
 import Eye from "../../../assets/icons/Eye";
 import { FormControlLabel, FormGroup, Switch } from "@mui/material";
 import { Link } from "react-router-dom";
+import SocialMediaSignInBtn from "../Buttons/SocialMediaSignInBtn";
+import googleIcon from "../../../assets/png/googleIcon.png";
+
 export default function LoginForm() {
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
 
@@ -10,11 +13,11 @@ export default function LoginForm() {
     setIsPasswordVisible(!isPasswordVisible);
   };
   return (
-    <div className="flex justify-center">
-      <div className="w-[68%] h-[100vh] overflow-hidden">
+    <div className="flex md:justify-center items-center h-screen w-full">
+      <div className="w-[68%] h-[100vh] overflow-hidden md:block hidden">
         <img src={logImg} alt="logotype" />
       </div>
-      <div className="flex flex-col w-[32%] h-[100vh] p-12 gap-6">
+      <div className="flex flex-col h-[100vh] p-4 sm:p-12 gap-6 w-full md:w-[32%]">
         <p className="font-semibold text-[20px] text-left">
           Nice to see you again
         </p>
@@ -60,7 +63,18 @@ export default function LoginForm() {
 
           <div className="h-[1px] bg-[#E5E5E5] w-full my-8"></div>
         </div>
-        <div></div>
+        <div>
+          <SocialMediaSignInBtn
+            icon={googleIcon}
+            text="Google"
+            alt="googleLogo"
+          />
+        </div>
+
+        <div className="flex items-center gap-2 text-xs font-normal justify-center">
+          <p>Dont have an account?</p>
+          <p className="text-[#007AFF]">Sign up now</p>
+        </div>
       </div>
     </div>
   );
