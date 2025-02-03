@@ -11,13 +11,9 @@ export default function Nav() {
   };
 
   return (
-    <div className="flex justify-between items-center md:px-16 px-4 py-4 border-b border-lightGray">
+    <div className="flex justify-between items-center md:px-16 px-4 py-4 border-b border-lightGray relative">
       <div className="text-lg font-bold text-gray">UCAFE</div>
       <div className="flex items-center gap-12">
-        <div className="sm:flex items-center gap-2 hidden">
-          <img src={person} alt="profile" className="h-6 w-6" />
-          <Link to={"/auth/login"}>Log in</Link>
-        </div>
         <div className="flex gap-2">
           <Link to="/cart" className="flex items-center gap-2">
             <img src={cart} alt="cart" className="h-6 w-6" />0
@@ -45,6 +41,15 @@ export default function Nav() {
             }`}
           ></div>
         </button>
+
+        {isOpen && (
+          <div className="absolute top-full right-4 mt-2 w-48 bg-white shadow-lg rounded-lg p-4 flex flex-col gap-4">
+            <Link to="/auth/login" className="flex items-center gap-2">
+              <img src={person} alt="profile" className="h-6 w-6" />
+              Log in
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
