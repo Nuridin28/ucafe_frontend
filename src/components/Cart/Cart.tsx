@@ -4,9 +4,9 @@ import { cart } from "../../constants/constants";
 export default function Cart() {
   const price = cart.reduce((acc, item) => acc + item.price, 0);
   return (
-    <div className="flex flex-col items-center my-8 gap-10 justify-center text-3xl px-80">
+    <div className="flex flex-col items-center my-8 gap-10 justify-center text-3xl lg:px-80 px-10">
       <ShoppingCartCheckoutIcon />
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 w-full">
         <div>
           <ul>
             {cart.map((item, id) => (
