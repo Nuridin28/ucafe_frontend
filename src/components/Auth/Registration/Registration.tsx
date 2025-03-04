@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import Eye from "../../../assets/icons/Eye";
+import {userApi} from "../../../api/userApi.ts";
+import * as React from "react";
 
 export const Registration = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
   const [firstName, setFirstName] = useState<string>("");
   const [secondName, setSecondName] = useState<string>("");
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [phoneNumber  , setPhoneNumber] = useState<string>("");
   const [login, setLogin] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
@@ -22,6 +24,20 @@ export const Registration = () => {
 
     console.log(user);
   }, [firstName, secondName, phoneNumber, login, password, confirmPassword]);
+
+  const dataForBackend = {
+    fullName:firstName + " " + secondName,
+    email: login,
+    avatarUrl: 'https://example.com/avatar.jpg',
+    password,
+  };
+
+  const api = userApi;
+
+  const handleRegistration = async () => {
+    const response = await api.register(dataForBackend.email, dataForBackend.password, dataForBackend.fullName, dataForBackend.avatarUrl);
+    console.log(response);
+  }
 
   const handleFirstNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFirstName(e.target.value);
@@ -120,7 +136,7 @@ export const Registration = () => {
         </div>
 
         <div className="w-full mt-9">
-          <button className="w-full text-center text-white bg-[#007AFF] px-6 py-[10px] rounded-md font-bold">
+          <button onClick={handleRegistration} className="w-full text-center text-white bg-[#007AFF] px-6 py-[10px] rounded-md font-bold">
             Register
           </button>
         </div>

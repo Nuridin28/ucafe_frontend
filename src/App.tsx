@@ -5,22 +5,23 @@ import Home from "./pages/Home";
 import Cart from "./components/Cart/Cart";
 import Login from "./pages/Login";
 import { Registration } from "./components/Auth/Registration/Registration";
+import NotFound from "./pages/NotFound.tsx";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute.tsx";
+import {AuthProvider} from "./context/AuthContext.tsx";
 
 function App() {
   return (
+      <AuthProvider>
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/cafe" element={<CafeList />} />
-      <Route path="/cafe/:id" element={<CafeDetails />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route
-        path="/a"
-        element={<div className="text-3xl text-red-800">a</div>}
-      />
+      <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
+      <Route path="/cafe" element={<PrivateRoute><CafeList /></PrivateRoute>} />
+      <Route path="/cafe/:id" element={<PrivateRoute><CafeDetails /></PrivateRoute>} />
+      <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
       <Route path="/auth/login" element={<Login />} />
       <Route path="/auth/registration" element={<Registration />} />
-      <Route path="*" element={<div>Page not found</div>} />
+      <Route path="*" element={<NotFound /> } />
     </Routes>
+      </AuthProvider>
   );
 }
 

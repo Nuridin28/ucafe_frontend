@@ -5,6 +5,7 @@ import { FormControlLabel, FormGroup, Switch } from "@mui/material";
 import { Link } from "react-router-dom";
 import SocialMediaSignInBtn from "../Buttons/SocialMediaSignInBtn";
 import googleIcon from "../../../assets/png/googleIcon.png";
+import {userApi} from "../../../api/userApi.ts";
 
 export default function LoginForm() {
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
@@ -12,6 +13,14 @@ export default function LoginForm() {
   const handleShowPassword = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
+
+  const api = userApi;
+
+  const login = async (username: string, password: string) => {
+    await api.login(username, password).then(d => console.log(d));
+  };
+
+
   return (
     <div className="flex md:justify-center items-center h-screen w-full">
       <div className="w-[68%] h-[100vh] overflow-hidden md:block hidden">
@@ -56,7 +65,7 @@ export default function LoginForm() {
           </div>
 
           <div className="w-full mt-9">
-            <button className="w-full text-center text-white bg-[#007AFF] px-6 py-[10px] rounded-md font-bold">
+            <button onClick={() => login("a@gmail.com", "12345678")} className="w-full text-center text-white bg-[#007AFF] px-6 py-[10px] rounded-md font-bold">
               Sign in
             </button>
           </div>

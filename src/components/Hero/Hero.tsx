@@ -1,9 +1,24 @@
 import hero from "../../assets/png/hero.jpg";
 import { benefits } from "../../constants/constants";
 import BenefitCard from "./BenefitCard";
-type Props = {};
 
-export default function Hero({}: Props) {
+import axios from "axios";
+
+export default function Hero() {
+  const fetchData = async () => {
+    try {
+      const response = await axios.post("http://localhost:5000/auth/register", {
+        email: "nurman@gmail.com",
+        password: "123456",
+        fullName: "LDKla lakflaf",
+        avatarUrl: "https://example.com/avatar.jpg",
+      });
+
+      console.log(response)
+    } catch (error) {
+      console.error("Ошибка:", error);
+    }
+  };
   return (
     <div className="md:px-16 px-4 py-8 flex flex-col justify-between">
       <div className="flex flex-col md:flex-row justify-between">
@@ -21,9 +36,19 @@ export default function Hero({}: Props) {
         </div>
       </div>
       <div className="flex md:flex-row flex-col gap-11 mt-10">
-        {benefits.map((benefit) => (
-          <BenefitCard img={benefit.img} text={benefit.text} />
+        {benefits.map((benefit, id) => (
+          <BenefitCard key={id} img={benefit.img} text={benefit.text} />
         ))}
+
+        <button
+          onClick={() => {
+            fetchData().then((res) => {
+              console.log(res);
+            });
+          }}
+        >
+          Fetch data
+        </button>
       </div>
     </div>
   );
