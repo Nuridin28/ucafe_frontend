@@ -11,6 +11,8 @@ export default {
         lightBlue: "#F2F4FA",
         lightGray: "#D4D7E5",
         gray: "#9093A6",
+        darkBlue: "#181C2E",
+        orange: "#FF7622",
       },
     },
   },

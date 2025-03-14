@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Eye from "../../../assets/icons/Eye";
 import {userApi} from "../../../api/userApi.ts";
 import * as React from "react";
+import axios from "axios";
 
 export const Registration = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
@@ -35,9 +36,32 @@ export const Registration = () => {
   const api = userApi;
 
   const handleRegistration = async () => {
-    const response = await api.register(dataForBackend.email, dataForBackend.password, dataForBackend.fullName, dataForBackend.avatarUrl);
-    console.log(response);
-  }
+    try {
+      const res = await api.register(
+          dataForBackend.email,
+          dataForBackend.password,
+          dataForBackend.fullName,
+          dataForBackend.avatarUrl
+      );
+
+      if (res?.token) {
+        console.log("Пользователь зарегистрирован:", res);
+        alert("Registration successful");
+        window.location.href = '/auth/login'
+      } else {
+        console.log("Ошибка регистрации, статус:", res.status, res.message);
+      }
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        console.error("Ошибка запроса:", err.response?.data?.message || err.message);
+      } else if (err instanceof Error) {
+        console.error("Ошибка:", err.message);
+      } else {
+        console.error("Неизвестная ошибка");
+      }
+    }
+  };
+
 
   const handleFirstNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFirstName(e.target.value);
