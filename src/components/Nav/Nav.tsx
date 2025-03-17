@@ -2,6 +2,7 @@ import { useState } from "react";
 import person from "../../assets/svg/person.svg";
 import { Link } from "react-router-dom";
 import CartIcon from "../../assets/icons/cart.icon";
+import { useCartStore } from "../../app/cartStore";
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,6 +15,8 @@ export default function Nav() {
     localStorage.removeItem("token");
     window.location.reload();
   };
+
+  const count = useCartStore((state) => state.items.length);
 
   return (
     <div className="flex justify-between items-center md:px-16 px-4 py-4 border-b border-lightGray relative">
@@ -45,7 +48,7 @@ export default function Nav() {
           </Link>
 
           <div className="bg-orange text-base font-bold text-white px-2 py-[3px] rounded-full absolute top-[-10%] right-0 h-6 w-6 flex justify-center items-center">
-            2
+            {count}
           </div>
         </div>
 

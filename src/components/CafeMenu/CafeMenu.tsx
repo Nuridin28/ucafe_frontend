@@ -20,6 +20,7 @@ export default function CafeMenu({ id }: Props) {
             title={item.name}
             descr={item.descr}
             price={item.price}
+            type={item.type}
           />
         ))}
       </div>

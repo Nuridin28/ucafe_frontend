@@ -1,8 +1,25 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { cartSlice } from "../features/Cart/cartSlice";
+import { create } from "zustand";
+import { IMenuItem } from "../types/types";
 
-export const cartStore = configureStore({
-  reducer: {
-    cart: cartSlice.reducer,
-  },
-});
+const initialItems: IMenuItem[] = [];
+
+export interface IUserCartStore {
+  items: IMenuItem[];
+  addItem: (item: IMenuItem) => void;
+  removeItem: (itemId: number) => void;
+}
+
+export const useCartStore = create<IUserCartStore>((set) => ({
+  items: initialItems,
+  addItem: (item: IMenuItem) =>
+    set((prevState: { items: IMenuItem[] }) => ({
+      ...prevState,
+      items: [...prevState.items, item],
+    })),
+  removeItem: (itemId: number) =>
+    set((prevState: { items: IMenuItem[] }) => ({
+      ...prevState,
+      items: prevState.items.filter((_, index) => index !== itemId),
+    })),
+  clearCart: () => set({ items: initialItems }),
+}));
