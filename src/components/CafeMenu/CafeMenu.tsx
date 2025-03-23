@@ -8,7 +8,7 @@ type Props = { id: number };
 export default function CafeMenu({ id }: Props) {
   const cafeMenu = cafes.find((cafe) => cafe.id === Number(id))?.menu;
   return (
-    <div className="flex bg-lightBlue p-8 rounded-xl">
+    <div className="flex p-8 rounded-xl mt-4">
       <div className="w-1/4 text-left hidden sm:flex">
         <CafeMenuLeft />
       </div>

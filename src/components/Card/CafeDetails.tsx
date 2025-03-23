@@ -1,11 +1,12 @@
 import { Link, useLocation, useParams } from "react-router-dom";
 import { cafes } from "../../constants/constants";
 import CafeMenu from "../CafeMenu/CafeMenu";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { useEffect } from "react";
-
+import { useEffect, useState } from "react";
+import { ChevronLeftIcon, DotsHorizontalIcon } from "@radix-ui/react-icons";
 export default function CafeDetails() {
   const location = useLocation();
+
+  const [selectedCategory, setSelectedCategory] = useState<string>("Sandwich");
 
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
@@ -23,23 +24,53 @@ export default function CafeDetails() {
     return <div>Cafe not found</div>;
   }
 
+  const categories = ["Sandwich", "Pizza", "Tea", "Coffee", "Candy", "Others"];
+
   return (
-    <>
-      <div className="p-8 text-[36px] text-center">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center p-8 cursor-pointer">
-            <Link to={"/"}>
-              <ArrowBackIcon />
+    <div className="">
+      <div className="p-6 flex items-center justify-between">
+        <div className="flex gap-4 items-center">
+          <div className="flex justify-center items-center bg-background rounded-full p-4">
+            <Link to="/cafes">
+              <ChevronLeftIcon />
             </Link>
           </div>
-          <h1 className="m-0">{cafe.title}</h1>
+          <div>Restaurant View</div>
         </div>
-        {/* <div className="flex flex-col justify-center items-center">
-          <img src={cafe.img} alt={cafe.title} className="rounded-2xl my-4" />
-          <p>{cafe.descr}</p>
-        </div> */}
-        <CafeMenu id={cafe.id} />
+        <div className="flex justify-center items-center bg-background rounded-full p-4">
+          <Link to="/cafes">
+            <DotsHorizontalIcon />
+          </Link>
+        </div>
       </div>
-    </>
+
+      <div className="p-6 mt-6">
+        <div className="text-black font-bold text-xl">{cafe.title}</div>
+        <div className="text-gray font-normal text-sm mt-2">{cafe.descr}</div>
+      </div>
+
+      <div className="pl-6 overflow-x-auto scrollbar-none">
+        <div className="flex gap-2 mt-8 flex-nowrap">
+          {categories.map((category, index) => (
+            <div
+              key={index}
+              onClick={() => setSelectedCategory(category)}
+              className={`cursor-pointer whitespace-nowrap transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md active:scale-95 ${
+                category === selectedCategory
+                  ? "bg-primary text-white shadow-lg"
+                  : "text-black bg-transparent border-2 border-[#EDEDED]"
+              } rounded-3xl px-5 py-3`}
+              style={{ animation: `fadeIn 0.5s ease ${index * 0.05}s both` }}
+            >
+              {category}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <CafeMenu id={Number(id)} />
+      </div>
+    </div>
   );
 }

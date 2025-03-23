@@ -4,6 +4,10 @@ export default {
   theme: {
     extend: {
       colors: {
+        primary: "#F58D1D",
+        background: "#ECF0F4",
+        gray: "#A0A5BA",
+        inputBg: "#F6F6F6",
         yellow: "#FFE145",
         yellowDark: "#B79C10",
         yellowLight: "#FFF7CC",
@@ -16,5 +20,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar")],
 };

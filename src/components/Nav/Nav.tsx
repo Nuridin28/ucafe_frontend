@@ -19,7 +19,7 @@ export default function Nav() {
   const count = useCartStore((state) => state.items.length);
 
   return (
-    <div className="flex justify-between items-center md:px-16 px-4 py-4 border-b border-lightGray relative">
+    <div className="flex justify-between items-center md:px-16 px-4 py-4 relative">
       <div className="flex items-center justify-between w-full">
         <button
           className="flex flex-col justify-center items-center w-8 h-8 gap-1.5"

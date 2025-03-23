@@ -34,13 +34,13 @@ export default function CafeList() {
             </Link>
           </div>
         )}
-        <p className="text-2xl font-bold">Restaurants</p>
+        <p className="text-2xl font-bold">Open Restaurants</p>
         {!isCafePage && (
           <button
             onClick={redirect}
             className="text-gray bg-lightBlue text-base px-6 py-3 rounded-xl hover:bg-slate-200"
           >
-            Show all
+            See All
           </button>
         )}
       </div>
