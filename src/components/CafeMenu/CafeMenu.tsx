@@ -12,7 +12,7 @@ export default function CafeMenu({ id }: Props) {
       <div className="w-1/4 text-left hidden sm:flex">
         <CafeMenuLeft />
       </div>
-      <div className="text-black text-3xl sm:w-1/2 w-full">
+      <div className="text-black grid grid-cols-2 gap-2">
         {cafeMenu?.map((item, id) => (
           <CafeMenuItem
             key={id}

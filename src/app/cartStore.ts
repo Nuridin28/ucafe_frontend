@@ -6,7 +6,7 @@ const initialItems: IMenuItem[] = [];
 export interface IUserCartStore {
   items: IMenuItem[];
   addItem: (item: IMenuItem) => void;
-  removeItem: (itemId: number) => void;
+  removeItem: (name: string) => void;
 }
 
 export const useCartStore = create<IUserCartStore>((set) => ({
@@ -16,10 +16,17 @@ export const useCartStore = create<IUserCartStore>((set) => ({
       ...prevState,
       items: [...prevState.items, item],
     })),
-  removeItem: (itemId: number) =>
-    set((prevState: { items: IMenuItem[] }) => ({
-      ...prevState,
-      items: prevState.items.filter((_, index) => index !== itemId),
-    })),
+  removeItem: (name: string) =>
+    set((prevState) => {
+      const indexToRemove = prevState.items.findIndex(
+        (item) => item.name === name
+      );
+      if (indexToRemove === -1) return prevState;
+      return {
+        ...prevState,
+        items: prevState.items.filter((_, idx) => idx !== indexToRemove),
+      };
+    }),
+
   clearCart: () => set({ items: initialItems }),
 }));
