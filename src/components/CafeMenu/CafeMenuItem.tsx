@@ -1,6 +1,7 @@
 import { useCartStore } from "../../app/cartStore";
 import { PlusIcon } from "@radix-ui/react-icons";
 import MultipleItemChoose from "./MultipleItemChoose";
+import { Link } from "react-router-dom";
 
 type Props = {
   img: string;
@@ -30,13 +31,22 @@ export default function CafeMenuItem({
   };
 
   return (
-    <div className="py-4 sm:py-8 px-4 sm:px-16 border border-gray rounded-2xl mt-4 shadow-lg flex flex-col justify-between h-full">
-      <div className="flex flex-col sm:flex-row sm:gap-10 gap-2">
-        <img className="sm:w-1/2 w-full rounded-lg" src={img} alt="photo" />
-        <div className="text-left text-base">
-          <p className="text-grayDark font-bold text-sm">{name}</p>
+    <div className="py-1 sm:py-8 w-full  px-2 sm:px-16 rounded-2xl mt-4 flex flex-col justify-between h-full shadow-2xl">
+      <Link to={"details/" + 2}>
+        <div className="flex flex-col sm:flex-row sm:gap-10 gap-2">
+          <div className="relative w-full pb-[65%]">
+            <img
+              src={img}
+              alt="logo"
+              className="absolute inset-0 w-full h-full object-cover rounded-2xl"
+            />
+          </div>
+
+          <div className="text-left text-base">
+            <p className="text-grayDark font-bold text-sm">{name}</p>
+          </div>
         </div>
-      </div>
+      </Link>
 
       <div className="flex flex-col items-center gap-4 mt-4">
         <p>{price} T</p>

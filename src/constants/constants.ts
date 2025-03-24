@@ -1,102 +1,80 @@
-import mock1 from "../assets/png/mock1.jpg";
-import sandwith from "../assets/png/sandwitch.jpg";
-import paris from "../assets/png/paris.png";
-import time from "../assets/png/time.png";
-
 export const cafes = [
   {
     id: 1,
-    title: "Cafe1",
-    descr: "Some descr for cafe",
-    img: mock1,
+    title: "Starbucks",
+    descr: "Лучшее место для кофе и сэндвичей в городе",
+    img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93",
     menu: [
       {
-        name: "Нано говяжье комбо",
-        img: sandwith,
-        price: 2790,
-        descr: "Нано бургер говяжий + картофель фри + соус кетчуп + напиток",
-        type: "sandwiches",
+        name: "Биг Сэндвич с ветчиной",
+        img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93",
+        price: 2200,
+        descr: "Свежий сэндвич с ветчиной, сыром и салатом",
+        type: "sandwich",
       },
+
       {
-        name: "sandwitch",
-        img: sandwith,
-        price: 500,
-        descr: "taste",
-        type: "sandwiches",
+        name: "Капучино",
+        img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93",
+        price: 900,
+        descr: "Ароматный капучино с мягкой пенкой",
+        type: "pizza",
       },
     ],
   },
   {
     id: 2,
-    title: "Cafe2",
-    descr: "Some descr for cafe",
-    img: mock1,
+    title: "Coffeedelia",
+    descr: "Место для ценителей настоящего кофе и выпечки",
+    img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085",
     menu: [
       {
-        name: "Нано говяжье комбо",
-        img: sandwith,
-        price: 2790,
-        descr: "Нано бургер говяжий + картофель фри + соус кетчуп + напиток",
-        type: "sandwiches",
+        name: "Мокко",
+        img: "https://images.unsplash.com/photo-1511920170033-f8396924c348",
+        price: 950,
+        descr: "Кофе мокко с шоколадом и взбитыми сливками",
+        type: "tea",
       },
       {
-        name: "sandwitch",
-        img: sandwith,
-        price: 500,
-        descr: "taste",
-        type: "sandwiches",
+        name: "Круассан с шоколадом",
+        img: "https://images.unsplash.com/photo-1512058564366-c9e1d31714af",
+        price: 750,
+        descr: "Свежеиспечённый круассан с начинкой из шоколада",
+        type: "coffee",
       },
     ],
   },
   {
     id: 3,
-    title: "Cafe3",
-    descr: "Some descr for cafe",
-    img: mock1,
+    title: "Burger Heroes",
+    descr: "Сочные бургеры и освежающие напитки",
+    img: "https://images.unsplash.com/photo-1601924582971-bbe6d6a2ef56",
     menu: [
       {
-        name: "Cola",
-        img: sandwith,
-        price: 2790,
-        descr: "Нано бургер говяжий + картофель фри + соус кетчуп + напиток",
-        type: "drink",
+        name: "Чизбургер Классический",
+        img: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90",
+        price: 1990,
+        descr: "Сочный бургер с говядиной, сыром чеддер и соусом",
+        type: "sandwich",
       },
       {
-        name: "Tea",
-        img: sandwith,
-        price: 500,
-        descr: "taste",
+        name: "Лимонад клубничный",
+        img: "https://images.unsplash.com/photo-1558640469-62cdbb4c7d90",
+        price: 700,
+        descr: "Освежающий напиток с натуральной клубникой",
         type: "tea",
       },
     ],
-  },
-  {
-    id: 4,
-    title: "Cafe4",
-    descr: "Some descr for cafe",
-    img: mock1,
-  },
-  {
-    id: 5,
-    title: "Cafe5",
-    descr: "Some descr for cafe",
-    img: mock1,
-  },
-  {
-    id: 6,
-    title: "Cafe6",
-    descr: "Some descr for cafe",
-    img: mock1,
   },
 ];
 
 export const benefits = [
   {
-    img: time,
+    img: "https://cdn-icons-png.flaticon.com/512/2921/2921822.png",
     text: "Order will be ready in less than 15 minutes",
   },
   {
-    img: paris,
+    img: "https://cdn-icons-png.flaticon.com/512/135/135620.png",
     text: "Only fresh and natural products",
   },
 ];
@@ -109,5 +87,3 @@ export const cafeMenuItems = [
   "drinks",
   "other",
 ];
-
-export const cart: any[] = [];

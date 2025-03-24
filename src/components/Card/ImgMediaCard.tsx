@@ -20,9 +20,14 @@ export default function ImgMediaCard({ id, title, descr, img }: Props) {
       className="shadow-2xl rounded-2xl text-black text-center cursor-pointer"
       onClick={handleClick}
     >
-      <div>
-        <img src={img} alt="logo" className="rounded-2xl" />
+      <div className="relative w-full pb-[56.25%]">
+        <img
+          src={img}
+          alt="logo"
+          className="absolute inset-0 w-full h-full object-cover rounded-2xl"
+        />
       </div>
+
       <div className="p-4">
         <div>{title}</div>
         <div>{descr}</div>
