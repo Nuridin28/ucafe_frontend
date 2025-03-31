@@ -10,6 +10,7 @@ import { AuthProvider } from "./context/AuthContext.tsx";
 import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute.tsx";
 import CafeMenuItemDetails from "./components/CafeMenu/CafeMenuItemDetails.tsx";
 import AdminPage from "./components/Admin/Home.tsx";
+import RunningOrders from "./components/Admin/Orders/Running/index.tsx";
 
 function App() {
   return (
@@ -20,6 +21,14 @@ function App() {
           element={
             <ProtectedRoute requiredRole="admin">
               <AdminPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/running-orders"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <RunningOrders />
             </ProtectedRoute>
           }
         />

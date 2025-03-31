@@ -8,19 +8,25 @@ const AdminPage = (): JSX.Element => {
 
   const handlePageChange = (page: string) => {
     setCurrentPage(page);
-    navigate(`/${page}`);
+    navigate(`/admin/${page}`);
   };
 
   const statsCards = [
     { value: "20", label: "RUNNING ORDERS" },
     { value: "05", label: "ORDER REQUEST" },
+    { value: "1", label: "READY" },
   ];
+
+  const handleOrderPageChange = () => {
+    navigate(`/admin/running-orders`);
+  };
 
   return (
     <div>
       <div className="flex flex-wrap justify-center">
         {statsCards.map((card, index) => (
           <div
+            onClick={() => handleOrderPageChange()}
             key={index}
             className="w-64 h-32 bg-white shadow-md m-4 p-4 rounded-lg"
           >
