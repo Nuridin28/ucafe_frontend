@@ -18,12 +18,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         const token = localStorage.getItem("token");
         if (token) {
             try {
-                const decodedToken = JSON.parse(atob(token.split(".")[1]));
+                const decodedToken = JSON.parse(atob(token.split(".")[1])); // Декодирование JWT
                 setIsAuth(true);
                 setRole(decodedToken.role);
             } catch (error) {
                 console.error("Ошибка декодирования токена:", error);
-                logout();
+                logout(); // Очистка данных в случае ошибки
             }
         }
         setLoading(false);

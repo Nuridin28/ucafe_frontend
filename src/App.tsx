@@ -6,66 +6,66 @@ import Cart from "./components/Cart/Cart";
 import Login from "./pages/Login";
 import { Registration } from "./components/Auth/Registration/Registration";
 import NotFound from "./pages/NotFound.tsx";
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute.tsx";
 import { AuthProvider } from "./context/AuthContext.tsx";
 import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute.tsx";
 import CafeMenuItemDetails from "./components/CafeMenu/CafeMenuItemDetails.tsx";
+import AdminPage from "./components/Admin/Home.tsx";
 
 function App() {
   return (
     <AuthProvider>
       <Routes>
-        {/*// <ProtectedRoute><Login /></ProtectedRoute>*/}
+        <Route
+          path="/admin/home"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <AdminPage />
+            </ProtectedRoute>
+          }
+        />
+
         <Route
           path="/"
           element={
-            <PrivateRoute>
+            <ProtectedRoute requiredRole="user">
               <Home />
-            </PrivateRoute>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/cafe"
           element={
-            <PrivateRoute>
+            <ProtectedRoute requiredRole="user">
               <CafeList />
-            </PrivateRoute>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/cafe/:id"
           element={
-            <PrivateRoute>
+            <ProtectedRoute requiredRole="user">
               <CafeDetails />
-            </PrivateRoute>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/cafe/:id/details/:id"
           element={
-            <PrivateRoute>
+            <ProtectedRoute requiredRole="user">
               <CafeMenuItemDetails />
-            </PrivateRoute>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/cart"
           element={
-            <PrivateRoute>
+            <ProtectedRoute requiredRole="user">
               <Cart />
-            </PrivateRoute>
-          }
-        />
-        <Route path="/auth/login" element={<Login />} />
-        <Route
-          path="/auth/registration"
-          element={
-            <ProtectedRoute>
-              {" "}
-              <Registration />
             </ProtectedRoute>
           }
         />
+        <Route path="/auth/login" element={<Login />} />
+        <Route path="/auth/registration" element={<Registration />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </AuthProvider>
