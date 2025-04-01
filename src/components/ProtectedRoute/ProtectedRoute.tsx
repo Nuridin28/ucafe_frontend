@@ -1,6 +1,5 @@
 import { Navigate } from "react-router-dom";
 import { useAuthStore } from "../../app/authStore";
-import { userStore } from "../../app/userStore";
 
 interface ProtectedRouteProps {
   children: JSX.Element;
@@ -13,14 +12,13 @@ export const ProtectedRoute = ({
   requiredRole,
   route,
 }: ProtectedRouteProps) => {
-  const { isAuth } = useAuthStore((state) => state);
-  const { role } = userStore((state) => state);
+  const { isAuth, role } = useAuthStore((state) => state);
 
   if (!isAuth) {
     return <Navigate to="/auth/login" replace />;
   }
 
-  if (role === undefined) {
+  if (role === null) {
     return <div>Loading...</div>;
   }
 

@@ -1,27 +1,64 @@
+import { useEffect, useState } from "react";
 import img from "../../../../assets/png/sandwitch.jpg";
-import Button from "../../../Common/Button";
-export default function OrderItem() {
+import { FoodItem, Order } from "../../../../types/types";
+import { foodItemApi } from "../../../../api/foodItemApi";
+
+type OrderItemProps = {
+  order: Order;
+};
+
+type OrderFoodItem = FoodItem & {
+  quantity: number;
+  price: number;
+};
+
+export default function OrderItem({ order }: OrderItemProps) {
+  const [foodItems, setFoodItems] = useState<OrderFoodItem[]>([]);
+
+  useEffect(() => {
+    const fetchFoodItems = async () => {
+      try {
+        const items = await Promise.all(
+          order.items.map(async (item) => {
+            const foodItem = await foodItemApi.getFoodItemById(item.foodItem);
+            return {
+              ...foodItem,
+              quantity: item.quantity,
+              price: item.price,
+            };
+          })
+        );
+        setFoodItems(items);
+      } catch (error) {
+        console.error("Ошибка при получении блюд:", error);
+      }
+    };
+
+    fetchFoodItems();
+  }, [order]);
+
   return (
-    <div className="flex justify-between items-center bg-white shadow-md gap-4 p-4 rounded-lg">
-      <div className="w-1/2 flex items-center">
-        <img src={img} alt="" />
-      </div>
-      <div className="w-1/2 flex flex-col justify-between items-start">
-        <p>NAME</p>
-        <p>ORDER ID</p>
-        <p>PRICE</p>
-        <Button className="border border-primary text-primary hover:bg-primary hover:text-white">
-          DETAILS
-        </Button>
-        <div className="mt-2 flex flex-wrap justify-between items-center gap-2">
-          <Button className="border border-primary text-primary hover:bg-primary hover:text-white">
-            DONE
-          </Button>
-          <Button className="border border-primary text-primary hover:bg-primary hover:text-white">
-            CANCEL
-          </Button>
+    <div>
+      {foodItems.map((item) => (
+        <div
+          key={item._id}
+          className="flex items-center mb-4 border p-4 rounded-lg shadow-md"
+        >
+          <img
+            src={item.imageUrl || img}
+            alt={item.name}
+            className="w-16 h-16 rounded-full mr-4"
+          />
+          <div className="flex-grow">
+            <h2 className="text-lg font-semibold">{item.name}</h2>
+            <p className="text-gray-600">Количество: {item.quantity}</p>
+            <p className="text-gray-600">Цена за штуку: {item.price}₸</p>
+            <p className="text-gray-800 font-semibold">
+              Общая сумма: {item.price * item.quantity}₸
+            </p>
+          </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 }

@@ -4,11 +4,12 @@ import {
   putRequest,
   deleteRequest,
 } from "../helpers/api.request.ts";
+import { Cafe } from "../types/types.ts";
 
 class CafeApi {
   constructor() {}
 
-  async getAllCafes() {
+  async getAllCafes(): Promise<Cafe[]> {
     try {
       const cafes = await getRequest("cafes");
       return cafes;

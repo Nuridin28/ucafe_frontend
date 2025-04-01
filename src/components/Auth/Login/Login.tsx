@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logImg from "../../../assets/png/logImg.png";
 import Eye from "../../../assets/icons/Eye";
 import { FormControlLabel, FormGroup, Switch } from "@mui/material";
@@ -6,7 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 import SocialMediaSignInBtn from "../Buttons/SocialMediaSignInBtn";
 import googleIcon from "../../../assets/png/googleIcon.png";
 import { userApi } from "../../../api/userApi.ts";
-import * as React from "react";
 import { userStore } from "../../../app/userStore.ts";
 import { useAuthStore } from "../../../app/authStore.ts";
 
@@ -18,6 +17,14 @@ export default function LoginForm() {
   const { setFullName, setEmail, setRole } = userStore((state) => state);
   const login = useAuthStore((state) => state.login);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      login(token);
+      navigate("/");
+    }
+  }, [login, navigate]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -46,7 +53,7 @@ export default function LoginForm() {
       setEmail(res.email);
       setRole(res.role);
 
-      login();
+      login(res.token);
 
       localStorage.setItem("token", res.token);
       localStorage.setItem("role", res.role);

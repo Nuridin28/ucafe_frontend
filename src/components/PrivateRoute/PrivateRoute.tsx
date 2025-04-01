@@ -1,18 +1,17 @@
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+import { useAuthStore } from "../../app/authStore";
 
 interface Props {
-    children: JSX.Element;
+  children: JSX.Element;
 }
 
 const PrivateRoute = ({ children }: Props) => {
-    const { isAuth } = useAuth();
+  const { isAuth } = useAuthStore((state) => state);
 
-    if (!isAuth) {
-        return <Navigate to="/auth/login" />;
-    }
-
-    return children;
+  if (!isAuth) {
+    return <Navigate to="/auth/login" />;
+  }
+  return children;
 };
 
 export default PrivateRoute;

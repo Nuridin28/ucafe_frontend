@@ -4,13 +4,14 @@ import {
   putRequest,
   deleteRequest,
 } from "../helpers/api.request.ts";
+import { Order } from "../types/types.ts";
 
 class OrderApi {
   constructor() {}
 
-  async getAllOrders() {
+  async getAllOrders(): Promise<Order[]> {
     try {
-      const orders = await getRequest("orders");
+      const orders = await getRequest("orders", true);
       return orders;
     } catch (error) {
       console.error("Ошибка при получении заказов:", error);
@@ -18,9 +19,19 @@ class OrderApi {
     }
   }
 
+  async getOrderById(orderId: string) {
+    try {
+      const order = await getRequest(`orders/${orderId}`, true);
+      return order;
+    } catch (error) {
+      console.error("Ошибка при получении заказа:", error);
+      throw error;
+    }
+  }
+
   async getOrdersByCafe(cafeId: string) {
     try {
-      const orders = await getRequest(`orders/cafe/${cafeId}`);
+      const orders = await getRequest(`orders/cafe/${cafeId}`, true);
       return orders;
     } catch (error) {
       console.error("Ошибка при получении заказов кафе:", error);
@@ -34,7 +45,11 @@ class OrderApi {
     totalPrice: number
   ) {
     try {
-      const data = await postRequest("orders", { cafeId, items, totalPrice });
+      const data = await postRequest(
+        "orders",
+        { cafeId, items, totalPrice },
+        true
+      );
 
       console.log("Заказ создан:", data);
       return data;
@@ -46,7 +61,7 @@ class OrderApi {
 
   async updateOrderStatus(orderId: string, status: string) {
     try {
-      const data = await putRequest(`orders/${orderId}/status`, { status });
+      const data = await putRequest(`orders/${orderId}`, { status }, true);
 
       console.log("Статус заказа обновлён:", data);
       return data;
@@ -58,10 +73,23 @@ class OrderApi {
 
   async deleteOrder(orderId: string) {
     try {
-      await deleteRequest(`orders/${orderId}`);
+      await deleteRequest(`orders/${orderId}`, true);
       console.log("Заказ удалён");
     } catch (error) {
       console.error("Ошибка при удалении заказа:", error);
+      throw error;
+    }
+  }
+
+  async getCafeOrders(cafeId: string, orderStatus: string): Promise<Order[]> {
+    try {
+      const orders = await getRequest(
+        `orders/cafe/${cafeId}/status/${orderStatus}`,
+        true
+      );
+      return orders;
+    } catch (error) {
+      console.error("Ошибка при получении заказов кафе:", error);
       throw error;
     }
   }
