@@ -12,6 +12,7 @@ import CafeMenuItemDetails from "./components/CafeMenu/CafeMenuItemDetails.tsx";
 import AdminPage from "./components/Admin/Home.tsx";
 import RunningOrders from "./components/Admin/Orders/Running/index.tsx";
 import { Menu } from "./components/Admin/Menu/Menu.tsx";
+import RequestOrder from "./components/Admin/Orders/Req/index.tsx";
 
 function App() {
   return (
@@ -38,6 +39,14 @@ function App() {
           element={
             <ProtectedRoute requiredRole="admin">
               <Menu />
+            </ProtectedRoute>
+          }
+        />
+         <Route
+          path="/admin/order-requests"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <RequestOrder />
             </ProtectedRoute>
           }
         />
