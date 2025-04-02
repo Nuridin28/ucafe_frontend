@@ -11,6 +11,7 @@ import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute.tsx";
 import CafeMenuItemDetails from "./components/CafeMenu/CafeMenuItemDetails.tsx";
 import AdminPage from "./components/Admin/Home.tsx";
 import RunningOrders from "./components/Admin/Orders/Running/index.tsx";
+import { Menu } from "./components/Admin/Menu/Menu.tsx";
 
 function App() {
   return (
@@ -29,6 +30,14 @@ function App() {
           element={
             <ProtectedRoute requiredRole="admin">
               <RunningOrders />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/menu"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <Menu />
             </ProtectedRoute>
           }
         />

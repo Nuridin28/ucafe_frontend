@@ -2,7 +2,6 @@ import {
   BellIcon,
   HamburgerMenuIcon,
   PersonIcon,
-  PlusIcon,
   TokensIcon,
 } from "@radix-ui/react-icons";
 
@@ -15,7 +14,6 @@ const Nav = ({ currentPage, onPageChange }: NavProps): JSX.Element => {
   const buttons = [
     { icon: TokensIcon, alt: "home" },
     { icon: HamburgerMenuIcon, alt: "menu" },
-    { icon: PlusIcon, alt: "plus" },
     { icon: BellIcon, alt: "bell" },
     { icon: PersonIcon, alt: "person" },
   ];
