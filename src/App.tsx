@@ -10,9 +10,12 @@ import { AuthProvider } from "./context/AuthContext.tsx";
 import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute.tsx";
 import CafeMenuItemDetails from "./components/CafeMenu/CafeMenuItemDetails.tsx";
 import AdminPage from "./components/Admin/Home.tsx";
-import RunningOrders from "./components/Admin/Orders/Running/index.tsx";
 import { Menu } from "./components/Admin/Menu/Menu.tsx";
 import RequestOrder from "./components/Admin/Orders/Req/index.tsx";
+import RunningOrdersPage from "./components/Admin/Orders/Running/RunningOrdersPage.tsx";
+import CompletedOrdersPage from "./components/Admin/Orders/Ready/CompletedOrdersPage.tsx";
+import ProfilePage from "./components/Admin/Profile/ProfilePage.tsx";
+import NotificationsPage from "./components/Admin/Notification/NotificationPage.tsx";
 
 function App() {
   return (
@@ -30,7 +33,15 @@ function App() {
           path="/admin/running-orders"
           element={
             <ProtectedRoute requiredRole="admin">
-              <RunningOrders />
+              <RunningOrdersPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/completed-orders"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <CompletedOrdersPage />
             </ProtectedRoute>
           }
         />
@@ -42,11 +53,29 @@ function App() {
             </ProtectedRoute>
           }
         />
-         <Route
-          path="/admin/order-requests"
+        <Route
+          path="/admin/order-request"
           element={
             <ProtectedRoute requiredRole="admin">
               <RequestOrder />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/person"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <ProfilePage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/bell"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <NotificationsPage />
             </ProtectedRoute>
           }
         />

@@ -18,12 +18,12 @@ interface ProductCardProps {
 
 export function ProductCard({ product, onEdit, onDelete }: ProductCardProps) {
   return (
-    <Card className="overflow-hidden">
+    <Card className="overflow-hidden ">
       <div className="relative h-48 w-full">
         <img
           src={product.image || "/placeholder.svg"}
           alt={product.name}
-          className="object-cover"
+          className="object-cover w-full h-full"
         />
       </div>
       <CardHeader>

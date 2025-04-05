@@ -8,10 +8,10 @@ const AdminPage = (): JSX.Element => {
   const navigate = useNavigate();
 
   const [statsCards, setStatsCards] = useState([
-    { value: "0", label: "RUNNING ORDERS" },
-    { value: "0", label: "ORDER REQUEST" },
-    { value: "0", label: "READY" },
-    { value: "0", label: "CANCELLED" },
+    { value: "0", label: "RUNNING ORDERS", route: "running-orders" },
+    { value: "0", label: "ORDER REQUEST", route: "order-request" },
+    { value: "0", label: "READY", route: "completed-orders" },
+    { value: "0", label: "CANCELLED", route: "cancelled" },
   ]);
 
   useEffect(() => {
@@ -33,10 +33,26 @@ const AdminPage = (): JSX.Element => {
         });
 
         setStatsCards([
-          { value: orderStats.in_progress.toString(), label: "RUNNING ORDERS" },
-          { value: orderStats.new.toString(), label: "ORDER REQUEST" },
-          { value: orderStats.done.toString(), label: "READY" },
-          { value: orderStats.cancelled.toString(), label: "CANCELLED" },
+          {
+            value: orderStats.in_progress.toString(),
+            label: "RUNNING ORDERS",
+            route: "running-orders",
+          },
+          {
+            value: orderStats.new.toString(),
+            label: "ORDER REQUEST",
+            route: "order-request",
+          },
+          {
+            value: orderStats.done.toString(),
+            label: "READY",
+            route: "completed-orders",
+          },
+          {
+            value: orderStats.cancelled.toString(),
+            label: "CANCELLED",
+            route: "cancelled",
+          },
         ]);
       } catch (error) {
         console.error("Ошибка при получении заказов:", error);
@@ -45,13 +61,14 @@ const AdminPage = (): JSX.Element => {
 
     fetchOrders();
   }, []);
+
   const handlePageChange = (page: string) => {
     setCurrentPage(page);
     navigate(`/admin/${page}`);
   };
 
-  const handleOrderPageChange = () => {
-    navigate(`/admin/running-orders`);
+  const handleOrderPageChange = (route: string) => {
+    navigate(`/admin/${route}`);
   };
 
   return (
@@ -59,7 +76,7 @@ const AdminPage = (): JSX.Element => {
       <div className="flex flex-wrap justify-center">
         {statsCards.map((card, index) => (
           <div
-            onClick={handleOrderPageChange}
+            onClick={() => handleOrderPageChange(card.route)}
             key={index}
             className="w-64 h-32 bg-white shadow-md m-4 p-4 rounded-lg cursor-pointer"
           >
